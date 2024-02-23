@@ -1,0 +1,26 @@
+.search-box {
+    position: relative;
+}  
+
+.search-box .list-group{
+    max-height: 200px;
+    visibility: visible;
+    position: absolute;
+    width: 100%;
+    background: white;
+    border-radius: 0 0 10px 10px;
+    display: none;
+    z-index: 999
+}
+
+.search-box .list-group.active{
+    display: block;
+}
+
+.card .list-group .list-group-item span {
+    display: inline;
+}
+
+.card .list-group .list-group-item span:not(:last-child):after {
+    content: ",";
+}

@@ -1,0 +1,10 @@
+<table class="table w-100">
+    <tr>
+        <th>Letra</th>
+        <th>Cantidad</th> 
+    </tr>
+    <tr ng-repeat="e in tablaResumen">
+        <td>{{ e.letra | uppercase }}</td>
+        <td>{{ e.cantidad }}</td> 
+    </tr>
+</table>

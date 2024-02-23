@@ -1,0 +1,29 @@
+<div> 
+    <table class="table table-striped table-hover">
+        <tr> 
+            <th></th> 
+            <th>Nombre</th> 
+            <th>Tipo</th> 
+        </tr>
+        <tr ng-class="{'table-active': poke.name === pokemon.name }" 
+            class="cursor-pointer align-items-center"
+            ng-repeat="poke in filtered = pokemons | filter: buscarPokemon.name | startFrom: (currentPage - 1) * entryLimit | limitTo: entryLimit" 
+            ng-click="getPokemon(poke.url)"
+            > 
+            <td class="text-capitalize align-middle">
+                <img src="{{ poke.img }}" alt="poke.name" class="rounded img-thumbnail" style="width: 50px">
+            </td>
+            <td class="text-capitalize align-middle">{{ poke.name.replaceAll('-', ' ') }}</td>
+            <td class="text-capitalize align-middle">  
+                <span 
+                    ng-repeat="type in poke.types" 
+                    class="badge rounded-pill bg-primary text-capitalize mx-1"
+                    ng-class="colorType(type.type.name)" 
+                >
+                    {{ type.type.name }}
+                </span>
+            </td> 
+        </tr>
+    </table>
+    <ng-include src="'inc/pagination.html'" />
+</div>

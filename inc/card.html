@@ -1,0 +1,51 @@
+<div class="card mx-auto" style="max-width: 320px"> 
+    <div id="carousel" class="carousel  carousel-fade bg-light" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img ng-src="{{ pokemon.img }}" class="w-100" alt="{{ pokemon.name }}">
+            </div>
+            <div class="carousel-item">
+                <img ng-src="{{ pokemon.imgBack }}" class="w-100" alt="{{ pokemon.name }}"> 
+            </div>
+        </div>  
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-capitalize">{{ pokemon.name }}</h5>
+        <p class="card-text">
+            <span 
+                ng-repeat="type in pokemon.types" 
+                class="badge rounded-pill bg-primary text-capitalize mx-1"
+                ng-class="colorType(type.type.name)" 
+            >
+                {{ type.type.name }}
+            </span>
+        </p>
+    </div> 
+    <ul class="list-group">
+        <li class="text-capitalize list-group-item"><strong>Peso:</strong> {{ pokemon.weight }} kg</li> 
+        <li class="text-capitalize list-group-item"><strong>Altura:</strong> {{ pokemon.height }} cm</li> 
+        <li class="text-capitalize list-group-item">
+            <strong class="d-block">Habilidades:</strong>
+            <span ng-repeat="skill in pokemon.abilities">
+                {{ skill.ability.name.replaceAll('-', '').trim() }}
+            </span>
+        </li>  
+        <li class="text-capitalize list-group-item">
+            <strong class="d-block">Movimientos:</strong> 
+            <span ng-repeat="movimiento in pokemon.moves | limitTo: 5">
+                {{ movimiento.move.name.replaceAll('-', '').trim() }}
+            </span>
+        </li>  
+        <li class="text-capitalize list-group-item" ng-repeat="stat in pokemon.stats">
+            <strong>{{ stat.stat.name.replaceAll('-', ' ') }}:</strong> <span>{{stat.base_stat}}</span>
+        </li>
+    </ul>  
+</div>

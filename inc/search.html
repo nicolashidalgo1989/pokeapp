@@ -1,0 +1,6 @@
+<form class="search-box"> 
+    <input class="form-control" ng-change="mostrarLista()" autocomplete="off" spellcheck="false" placeholder="Buscar pokemón..." ng-model="buscarPokemon.name">
+    <ul class="list-group w-100 bg-light cursor-pointer" id="lista">
+        <li ng-click="seleccionarPokemonLista($event, poke.url)" class="list-group-item text-capitalize" ng-repeat="poke in filtered = pokemons | filter: buscarPokemon.name">{{ poke.name.replaceAll('-', ' ') }}</li>
+    </ul> 
+</form>

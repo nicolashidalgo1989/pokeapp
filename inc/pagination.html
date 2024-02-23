@@ -1,0 +1,17 @@
+<nav ng-disabled="!cargando" class="mx-auto">
+    <ul class="pagination ">
+        <li class="page-item">
+            <a ng-class="{'disabled': !prev }" class="page-link" aria-label="Previous" ng-click="onPrev()">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>  
+        <li class="page-item" ng-class="{'active': currentPage === i }" ng-repeat="i in totalPages.slice(currentPage - 1, totalPages.length) | limitTo: 10">
+            <a class="page-link" ng-click="onPage(i - 1)"> {{ i }} </a>
+        </li>  
+        <li class="page-item">
+        <a ng-class="{'disabled': !next }" class="page-link" aria-label="Next" ng-click="onNext()">
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+        </li>
+    </ul>
+</nav>
